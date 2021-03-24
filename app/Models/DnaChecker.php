@@ -12,7 +12,8 @@ use Symfony\Component\HttpFoundation\File\Exception\ExtensionFileException;
 class DnaChecker extends Model
 {
     use HasFactory;
-
+    
+    protected $storage_url = 'public/';
     protected $dna_in_file;
     protected $valid_sequence = '/((^A{1,}(CAT|TAC){1}A{1}){1}(T{1}(C{1}G{1,}T{1})*(AG){1}){1,}){1}((A{1,}(CAT|TAC){1}A{1}){1}(C{1}G{1,}T{1}){1,}){1,}/';
 
