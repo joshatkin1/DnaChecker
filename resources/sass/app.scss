@@ -1,0 +1,56 @@
+@import 'variables';
+body{
+    margin:0;
+    padding:1%;
+    font-family:sans-serif;
+}
+button{
+    cursor:pointer;
+    outline: none;
+}
+
+//BUTTONS
+.sml-btn{
+    padding:3px;
+    font-size:14px;
+    color:black;
+    font-family:sans-serif;
+}
+.checkout-btn-outr{
+    display:block;
+    float:left;
+    background-color:$gray;
+    padding:5px;
+    border-radius:15px;
+    border:solid 2px white;
+    box-shadow: $darkest-gray 0px 0px 0px 2px;
+    cursor:pointer;
+}
+.checkout-btn-inr{
+    background-color:$gray;
+    background-image:$gradient-gray;
+    -moz-background-image:$gradient-gray;
+    -o-background-image:$gradient-gray;
+    -webkit-background-image:$gradient-gray;
+    color:$darker-gray;
+    font-size:22px;
+    font-weight: bolder;
+    font-family:sans-serif;
+    padding:13px 23px;
+    border-radius:10px;
+    border:none;
+}
+.run-test{
+    padding:10px;
+    background-color:$red;
+    color:white;
+}
+
+//BOXSHADOWS
+.box-shdw-0121{
+    box-shadow: $darker-gray 0px 1px 2px 1px;
+    -webkit-box-shadow: $darker-gray 0px 1px 2px 1px;
+    -moz-box-shadow: $darker-gray 0px 1px 2px 1px;
+    -o-box-shadow: $darker-gray 0px 1px 2px 1px;
+}
+

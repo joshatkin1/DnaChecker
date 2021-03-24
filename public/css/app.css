@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  padding: 1%;
+  font-family: sans-serif;
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+}
+
+.sml-btn {
+  padding: 3px;
+  font-size: 14px;
+  color: black;
+  font-family: sans-serif;
+}
+
+.checkout-btn-outr {
+  display: block;
+  float: left;
+  background-color: #D5D5D5;
+  padding: 5px;
+  border-radius: 15px;
+  border: solid 2px white;
+  box-shadow: #525252 0px 0px 0px 2px;
+  cursor: pointer;
+}
+
+.checkout-btn-inr {
+  background-color: #D5D5D5;
+  background-image: linear-gradient(0deg, #DFDFDF, #F0F0F0);
+  -moz-background-image: linear-gradient(0deg, #DFDFDF, #F0F0F0);
+  -o-background-image: linear-gradient(0deg, #DFDFDF, #F0F0F0);
+  -webkit-background-image: linear-gradient(0deg, #DFDFDF, #F0F0F0);
+  color: #676767;
+  font-size: 22px;
+  font-weight: bolder;
+  font-family: sans-serif;
+  padding: 13px 23px;
+  border-radius: 10px;
+  border: none;
+}
+
+.run-test {
+  padding: 10px;
+  background-color: red;
+  color: white;
+}
+
+.box-shdw-0121 {
+  box-shadow: #676767 0px 1px 2px 1px;
+  -webkit-box-shadow: #676767 0px 1px 2px 1px;
+  -moz-box-shadow: #676767 0px 1px 2px 1px;
+  -o-box-shadow: #676767 0px 1px 2px 1px;
+}
