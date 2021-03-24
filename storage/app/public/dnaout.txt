@@ -1,0 +1,5 @@
+DNA OUTPUT <br>
+Case 1: Yes <br>
+Case 2: No <br>
+Case 3: No <br>
+END OF OUTPUT*/
