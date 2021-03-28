@@ -2,17 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Interfaces\DnaCheckerInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use League\Flysystem\FileNotFoundException;
 use League\Flysystem\UnreadableFileException;
-use Symfony\Component\HttpFoundation\File\Exception\ExtensionFileException;
 
-class DnaChecker extends Model
+
+class DnaChecker extends Model implements DnaCheckerInterface
 {
-    use HasFactory;
-    
     protected $storage_url = 'public/';
     protected $dna_in_file;
     protected $valid_sequence = '/((^A{1,}(CAT|TAC){1}A{1}){1}(T{1}(C{1}G{1,}T{1})*(AG){1}){1,}){1}((A{1,}(CAT|TAC){1}A{1}){1}(C{1}G{1,}T{1}){1,}){1,}/';
@@ -28,7 +26,7 @@ class DnaChecker extends Model
     }
 
     final public function removeDnaInputFileEmptyLines(){
-        for($i = 0; $i < count($this->dna_in_file) + 1; $i++){
+        for($i = 0; $i < count($this->dna_in_file); $i++){
             if($this->dna_in_file[$i] === ""){
                 array_splice($this->dna_in_file, $i,1);
             }

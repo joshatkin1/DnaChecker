@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{asset('/css/app.css')}}" />
 </head>
 <body class="antialiased">
-<h1>Result Error !</h1>
+<h1>Error !</h1>
 <p>read error below and then please try again.</p>
 <br/>
 {{$errors}}

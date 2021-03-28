@@ -20,9 +20,14 @@ Route::get('/', function () {
 Route::get('/test/button', function () {
     return view('button');
 });
-Route::get('/test/dnachecker', function () {
-    return view('dnachecker');
+Route::get('/dnachecker', function () {
+    if(session()->has('uploaded')){
+        return View::make('dnachecker')->with("uploaded" , true);
+    }else{
+        return View::make('dnachecker');
+    }
 });
 
-Route::get('/test/dnachecker/run', [App\Http\Controllers\DnaCheckerController::class, 'runTest'])->name('companyRegister-view');
-
+Route::get('/dnachecker/run', [App\Http\Controllers\DnaCheckerController::class, 'runTest'])->name('dna-checker-test');
+Route::post('/dnachecker/file/upload', [App\Http\Controllers\DnaFileController::class, 'dnaFileUpload'])->name('dna-file-upload');
+Route::get('/dnachecker/results/file/download', [App\Http\Controllers\DnaFileController::class, 'dnaOutputFileDownload'])->name('dna-file-download');

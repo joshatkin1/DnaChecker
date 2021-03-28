@@ -14,7 +14,7 @@
     <p>please see links to tech tests below (please excuse the lack of styling).</p>
         <ul>
             <li><a href="/test/button">task 1: button</a></li>
-            <li><a href="/test/dnachecker">task 2: dnachecker</a></li>
+            <li><a href="/dnachecker">task 2: dnachecker</a></li>
         </ul>
     </body>
 </html>

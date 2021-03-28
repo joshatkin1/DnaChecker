@@ -42,8 +42,23 @@ button{
 }
 .run-test{
     padding:10px;
-    background-color:$red;
+    background-color:$blue;
     color:white;
+}
+
+//FORMS
+.dnafileuploadform{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width:300px;
+    margin:20px 0px;
+}
+.dnafileuploadform > input{
+    padding:5px 0px;
+}
+.dnafileuploadform > button{
+    background-color:$blue-gray;
 }
 
 //BOXSHADOWS

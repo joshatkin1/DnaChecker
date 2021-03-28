@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 DNA OUTPUT <br>
 Case 1: Yes <br>
 Case 2: No <br>
 Case 3: No <br>
+Case 4: Yes <br>
 END OF OUTPUT*/
-=======
-
->>>>>>> e8a9fbb4bc2fcc74e9c17b7f4836fa6224524ae1

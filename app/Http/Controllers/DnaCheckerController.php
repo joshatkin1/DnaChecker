@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\DnaCheckerInterface;
 use Illuminate\Http\Request;
-use Exception;
-use App\Models\DnaChecker as DnaChecker;
-use Illuminate\Support\Facades\Storage;
 use League\Flysystem\FileNotFoundException;
 use League\Flysystem\UnreadableFileException;
 use Symfony\Component\HttpFoundation\File\Exception\ExtensionFileException;
@@ -13,7 +11,7 @@ use Symfony\Component\HttpFoundation\File\Exception\ExtensionFileException;
 class DnaCheckerController extends Controller
 {
 
-    final public function runTest(DnaChecker $dnaChecker){
+    final public function runTest(DnaCheckerInterface $dnaChecker){
         try{
 
             $dnaChecker->getDnaInputFileContents();
@@ -21,7 +19,7 @@ class DnaCheckerController extends Controller
             $dnaChecker->checkDnaFileFormat();
             $output_file_content = $dnaChecker->generateDnaFileResultsContent();
 
-            return  response($output_file_content, 200);
+            return view('dnacheckerresult')->with('output_file_content', $output_file_content);
 
         }catch(FileNotFoundException $exception){
           return view('exception', ['errors' => $exception->getMessage()]);
