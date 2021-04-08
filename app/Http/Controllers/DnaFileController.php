@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DnaFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use League\Flysystem\FileNotFoundException;
 use Symfony\Component\HttpFoundation\File\Exception\ExtensionFileException;
+use App\Interfaces\DnaCheckerInterface;
 
 class DnaFileController extends Controller
 {
-    final public function dnaFileUpload(Request $request){
+     public function dnaFileUpload(Request $request, DnaCheckerInterface $file){
         $uploadedFile = $request->file('file');
-        $file = new DnaFile();
         try {
             $file->uploadFile($uploadedFile);
             return Redirect::to('dnachecker')->with('uploaded', 'true');
@@ -21,8 +20,7 @@ class DnaFileController extends Controller
         }
     }
 
-    final public function dnaOutputFileDownload(Request $request){
-        $file = new DnaFile();
+    public function dnaOutputFileDownload(Request $request, DnaCheckerInterface $file){
         try{
             return $file->downloadPublicFile('dnaout.txt');
         }catch(FileNotFoundException $exception){

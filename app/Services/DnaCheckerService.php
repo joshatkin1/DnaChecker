@@ -1,19 +1,38 @@
 <?php
 
-namespace App\Models;
+namespace App\Services;
 
 use App\Interfaces\DnaCheckerInterface;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use League\Flysystem\FileNotFoundException;
 use League\Flysystem\UnreadableFileException;
+use Symfony\Component\HttpFoundation\File\Exception\ExtensionFileException;
 
-
-class DnaChecker extends Model implements DnaCheckerInterface
+class DnaCheckerService implements DnaCheckerInterface
 {
     protected $storage_url = 'public/';
+    protected $allowedFileExtensions = ["txt", "pdf", ".doc"];
     protected $dna_in_file;
     protected $valid_sequence = '/((^A{1,}(CAT|TAC){1}A{1}){1}(T{1}(C{1}G{1,}T{1})*(AG){1}){1,}){1}((A{1,}(CAT|TAC){1}A{1}){1}(C{1}G{1,}T{1}){1,}){1,}/';
+
+
+    public function uploadFile($file){
+        if(in_array($file->extension(), $this->allowedFileExtensions)){
+            return $file->storeAs('/public', 'dnain.txt');
+        }else{
+            throw new ExtensionFileException("We only accept .txt, .pdf and .doc files. please export as different file and try again.");
+        }
+    }
+
+    public function downloadPublicFile($filename){
+        $storage = new Storage();
+        $downloadFileUrl = '/public/' . $filename;
+        if($storage::exists($downloadFileUrl)){
+            return $storage::download($downloadFileUrl);
+        }else{
+            throw new FileNotFoundException("This file does not exist, please upload a dna file on previous page");
+        }
+    }
 
     final public function getDnaInputFileContents()
     {
@@ -54,7 +73,7 @@ class DnaChecker extends Model implements DnaCheckerInterface
 
         for ($i = 1; $i < count($file);$i++){
 
-        //LOOP THROUGH FILE CONTENTS ARRAY AND PASS TO checkDnaSequenceIsValid() function to determine if valid chromose
+            //LOOP THROUGH FILE CONTENTS ARRAY AND PASS TO checkDnaSequenceIsValid() function to determine if valid chromose
 
             if($this->checkDnaSequenceIsValid($file[$i])){
                 $line_output = "Case " . $i . ":" . " Yes <br>";

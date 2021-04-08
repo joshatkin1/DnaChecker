@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Interfaces\DnaCheckerInterface;
-use App\Models\DnaChecker;
+use App\Services\DnaCheckerService;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoriesServiceProvider extends ServiceProvider
@@ -25,6 +25,6 @@ class RepositoriesServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->bind(DnaCheckerInterface::class, DnaChecker::class);
+        $this->app->bind(DnaCheckerInterface::class, DnaCheckerService::class);
     }
 }
